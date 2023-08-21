@@ -22,7 +22,7 @@ cd docnet
 pip install -r requirements.txt
 ```
 
-3. JWT Secret and Algorithm
+3. AWS Access Keys and Secret
 create an environment file called `.env` and configure the following variables:
 
 ```
@@ -44,7 +44,20 @@ secret=xxxx
 python api.py
 ```
 
+The API will start running on `http://127.0.0.1:5000`.
 
+## Docker
+1. Install Docker.
+
+2. Build the Docker image
+```
+docker build -t docnet .
+```
+
+3. Run a Docker container from the built image
+```
+docker run -p 5000:5000 docnet
+```
 The API will start running on `http://127.0.0.1:5000`.
 
 ## How to Use
@@ -58,6 +71,9 @@ curl -X POST -F "document=@path/to/document.jpg" http://127.0.0.1:5000/verify_do
 Replace `path/to/document.jpg` with the path to the image or PDF document you want to verify.
 
 2. The API will process the uploaded document. The response will indicate if the document is verified or not.
+
+## Model
+You can download the pre-trained `docnet.h5` file from (here)[].
 
 ## Notes
 
