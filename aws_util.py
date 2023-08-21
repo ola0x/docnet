@@ -1,13 +1,12 @@
+import io
 import boto3
 import numpy as np
-from model_util import image, preprocess_input
 from PIL import Image
-import io
+from decouple import config
+from model_util import image, preprocess_input
 
-# Replace these with your AWS credentials and bucket name
-AWS_ACCESS_KEY_ID = 'AKIARTU374NWES7H5TXN'
-AWS_SECRET_ACCESS_KEY = 'tERHye0GSDSn51Z0ENwBw3hB7Swx8O3Y85MN0H6x'
-BUCKET_NAME = 'docnet-peapi'
+AWS_ACCESS_KEY_ID = config("key")
+AWS_SECRET_ACCESS_KEY = config("secret")
 
 # Initialize the S3 client
 s3 = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
@@ -23,11 +22,11 @@ def process_img(image_bytes):
     x = preprocess_input(x)
     return x
 
-def process_images_in_bucket(bucket_name):
+def process_images_in_specific_bucket_folder(bucket_name, specific_folder):
     images = []
     
-    # List objects in the bucket
-    objects = s3.list_objects_v2(Bucket=bucket_name)
+    # List objects in the bucket within the specific folder
+    objects = s3.list_objects_v2(Bucket=bucket_name, Prefix=f"{specific_folder}/")
     
     for obj in objects.get('Contents', []):
         key = obj['Key']
