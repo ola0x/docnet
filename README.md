@@ -26,8 +26,8 @@ pip install -r requirements.txt
 create an environment file called `.env` and configure the following variables:
 
 ```
-key=AKIARTU374NWES7H5TXN
-secret=tERHye0GSDSn51Z0ENwBw3hB7Swx8O3Y85MN0H6x
+key=xxx
+secret=xxxx
 ```
 
 - `key`: Replace with the AWS_ACCESS_KEY_ID.
