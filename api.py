@@ -34,15 +34,16 @@ def verify_document(specific_folder):
         return jsonify({'error': 'Unsupported file format'})
 
     db_representations = model.predict(processed_images)
-    img1_representation = model.predict(uploaded_images)[0,:]
 
     result = []
 
-    similar_indices = find_similar_images(img1_representation, db_representations)
-    if len(similar_indices) > 0:
-        result.append('The new doc is verified')
-    else:
-        result.append('The doc is not verified')
+    for img1_representation in uploaded_images:
+        img1_representation = model.predict(img1_representation)[0,:]
+        similar_indices = find_similar_images(img1_representation, db_representations)
+        if len(similar_indices) > 0:
+            result.append('The new doc is verified')
+        else:
+            result.append('The doc is not verified')
         
     return jsonify({'result': result})
 

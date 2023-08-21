@@ -22,7 +22,7 @@ def process_document(file_stream):
         image_data = file_stream.read()
         # image = Image.open(io.BytesIO(image_data))
         processed_image = process_img(image_data)
-        return processed_image  # Wrap the single image in a list
+        return [processed_image]  # Wrap the single image in a list
     elif file_extension == 'pdf':
         pdf_data = file_stream.read()
         pdf_document = fitz.open(stream=pdf_data, filetype='pdf')
