@@ -13,8 +13,8 @@ This repository contains a Flask API for verifying documents using image process
 
 1. Clone this repository to your local machine:
 ```bash
-git clone https://github.com/your-username/document-verification-api.git
-cd document-verification-api
+git clone https://github.com/your-username/docnet.git
+cd docnet
 ```
 
 2. Install the required packages:
