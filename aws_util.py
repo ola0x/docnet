@@ -45,11 +45,3 @@ def process_images_in_bucket(bucket_name):
         return np.vstack(images)
     else:
         return None
-
-if __name__ == "__main__":
-    processed_images = process_images_in_bucket(BUCKET_NAME)
-    if processed_images is not None:
-        print("Processed images shape:", processed_images.shape)
-    else:
-        print("No images were processed.")
-
