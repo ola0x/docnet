@@ -12,17 +12,6 @@ BUCKET_NAME = 'docnet-peapi'
 # Initialize the S3 client
 s3 = boto3.client('s3', aws_access_key_id=AWS_ACCESS_KEY_ID, aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
 
-def list_images_in_bucket(bucket_name):
-    # List objects in the bucket
-    objects = s3.list_objects_v2(Bucket=bucket_name)
-
-    # Print the list of image objects
-    print("List of images in the bucket:")
-    for obj in objects.get('Contents', []):
-        key = obj['Key']
-        if key.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.bmp')):
-            print(key)
-
 def load_image_from_bytes(image_bytes):
     return Image.open(io.BytesIO(image_bytes))
 
@@ -58,7 +47,6 @@ def process_images_in_bucket(bucket_name):
         return None
 
 if __name__ == "__main__":
-    # list_images_in_bucket(BUCKET_NAME)
     processed_images = process_images_in_bucket(BUCKET_NAME)
     if processed_images is not None:
         print("Processed images shape:", processed_images.shape)
