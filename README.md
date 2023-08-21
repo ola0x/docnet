@@ -30,18 +30,18 @@ key=xxx
 secret=xxxx
 ```
 
-- `key`: Replace with the AWS_ACCESS_KEY_ID.
-- `secret`: Replace with the AWS_SECRET_ACCESS_KEY .
+- `key`: Replace xxx with the AWS_ACCESS_KEY_ID.
+- `secret`: Replace xxxx with the AWS_SECRET_ACCESS_KEY .
 
 
-4. Open `app.py` and configure the following variables:
+4. Open `api.py` and configure the following variables:
 
 - `BUCKET_NAME`: Replace with the name of your AWS S3 bucket.
 
 5. Run the Flask API:
 
 ```
-python app.py
+python api.py
 ```
 
 
@@ -57,13 +57,12 @@ curl -X POST -F "document=@path/to/document.jpg" http://127.0.0.1:5000/verify_do
 
 Replace `path/to/document.jpg` with the path to the image or PDF document you want to verify.
 
-2. The API will process the uploaded document and determine if it's similar to documents in the specified folder. The response will indicate if the document is verified or not.
+2. The API will process the uploaded document. The response will indicate if the document is verified or not.
 
 ## Notes
 
-- Make sure to replace placeholders such as AWS credentials, bucket name, specific folder name, and other settings with your actual values.
-- This is a basic setup. For production use, consider implementing security measures, error handling, and using a production-ready server.
-- The `model_util.py` and `aws_util.py` modules contain utility functions for model processing and AWS S3 interactions. Make sure to include or adapt them according to your project's structure.
+- Make sure to replace placeholders such as AWS credentials, bucket name, s3 folder name, and other settings with your actual values.
+- The `model_util.py` and `aws_util.py` modules contain utility functions for model processing and AWS S3 interactions.
 
 ## License
 
