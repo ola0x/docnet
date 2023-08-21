@@ -6,10 +6,6 @@ from model_util import DeepModel
 from aws_util import process_img, process_images_in_specific_bucket_folder
 import fitz
 
-app = Flask(__name__)
-
-model = DeepModel._define_model()
-
 def find_similar_images(image_representation, db_representations, threshold=0.06):
     similarities = [DeepModel.findCosineDistance(image_representation, db_repr) for db_repr in db_representations]
     similar_indices = [i for i, similarity in enumerate(similarities) if similarity < threshold]
