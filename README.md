@@ -4,5 +4,21 @@ This repository contains a Flask API for verifying documents using image process
 
 ## Prerequisites
 
-- Python 3.x
+- Python 3.7.x
 - Required Python packages can be installed using `pip`:
+
+- Set up AWS credentials (Access Key ID and Secret Access Key) to access the S3 bucket.
+
+## Getting Started
+
+1. Clone this repository to your local machine:
+```bash
+git clone https://github.com/your-username/document-verification-api.git
+cd document-verification-api
+
+
+2. Install the required packages:
+```bash
+pip install -r requirements.txt
+
+
