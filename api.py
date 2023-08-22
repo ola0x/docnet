@@ -41,9 +41,9 @@ def verify_document(specific_folder):
         img1_representation = model.predict(img1_representation)[0,:]
         similar_indices = find_similar_images(img1_representation, db_representations)
         if len(similar_indices) > 0:
-            result.append('The new doc is verified')
+            result.append('Verified')
         else:
-            result.append('The doc is not verified')
+            result.append('Not verified')
         
     return jsonify({'result': result})
 
