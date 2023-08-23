@@ -6,7 +6,7 @@ from keras import Sequential
 from util import process_img_path
 from keras.layers import ZeroPadding2D, Convolution2D, MaxPooling2D, Dropout, Flatten, Activation
 
-model_path = '../docnet.h5'
+MODELPATH = '../docnet.h5'
 
 # Build and Load model
 @st.cache_resource
@@ -57,7 +57,7 @@ def load_model():
     model.add(Flatten())
     model.add(Activation('softmax'))
 
-    model.load_weights(model_path)
+    model.load_weights(MODELPATH)
 
     return model
 

@@ -41,9 +41,9 @@ cd docnet/dashboard
 pip install -r requirements.txt
 ```
 
-3. Open `auto_doc_p.py` and replace `model_path` with the name model_path variables:
+3. Open `auto_doc_p.py` and replace `MODELPATH` with the name model_path variables:
 
-  Open the `util.py` and replace the `image_folder` with your demo-folder path
+  Open the `util.py` and replace the `IMAGEFOLDER` with your demo-folder path
 
 4. Run the Streamlit APP:
 

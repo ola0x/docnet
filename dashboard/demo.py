@@ -7,7 +7,7 @@ from util import process_img, load_images, process_img_path
 # init
 model = load_model()
 
-image_folder = "demo-f"
+IMAGEFOLDER = "demo-f"
 
 if __name__ == "__main__":
 
@@ -17,7 +17,7 @@ if __name__ == "__main__":
         </div>
         """
     st.markdown(html_temp, unsafe_allow_html=True)
-    image_files, manuscripts = load_images(image_folder)
+    image_files, manuscripts = load_images(IMAGEFOLDER)
     view_manuscripts = st.multiselect("Select Document to verify", manuscripts)
     n = st.number_input("Select Grid Width", 1, 5, 3)
 
