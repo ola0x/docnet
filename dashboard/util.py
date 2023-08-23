@@ -6,8 +6,6 @@ from PIL import Image
 from keras.preprocessing import image
 from keras.applications.vgg16 import preprocess_input
 
-image_folder = "demo-f"
-
 def load_image_from_bytes(image_bytes):
     return Image.open(io.BytesIO(image_bytes))
 

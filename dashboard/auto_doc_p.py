@@ -1,13 +1,12 @@
 import os
-import keras
 import numpy as np
 import streamlit as st
-from util import process_img_path
 from keras import Model
 from keras import Sequential
-from keras.preprocessing import image
-from keras.applications.vgg16 import preprocess_input
+from util import process_img_path
 from keras.layers import ZeroPadding2D, Convolution2D, MaxPooling2D, Dropout, Flatten, Activation
+
+model_path = '../docnet.h5'
 
 # Build and Load model
 @st.cache_resource
@@ -58,7 +57,7 @@ def load_model():
     model.add(Flatten())
     model.add(Activation('softmax'))
 
-    model.load_weights('../docnet.h5')
+    model.load_weights(model_path)
 
     return model
 

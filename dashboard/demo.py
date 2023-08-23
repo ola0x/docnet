@@ -1,6 +1,6 @@
-import streamlit as st
 import cv2
 import numpy as np 
+import streamlit as st
 from auto_doc_p import load_model, Model, process_img_path, find_similar_images
 from util import process_img, load_images, process_img_path
 
