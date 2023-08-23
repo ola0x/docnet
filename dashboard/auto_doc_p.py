@@ -87,32 +87,3 @@ def find_similar_images(image_representation, db_representations, threshold=0.06
     similarities = [findCosineDistance(image_representation, db_repr) for db_repr in db_representations]
     similar_indices = [i for i, similarity in enumerate(similarities) if similarity < threshold]
     return similar_indices
-
-if __name__ == "__main__":
-
-    db_paths = [['waec\\wa2.jpg', 'waec\\wa1.png']]  # List of image paths, each sublist contains image paths for a folder
-
-    model = load_model()
-    vgg_face_descriptor = Model(inputs=model.layers[0].input, outputs=model.layers[-2].output)
-    
-    db_representations = []
-    
-    for folder_images in db_paths:
-        folder_representations = []
-        for image_path in folder_images:
-            img_representation = vgg_face_descriptor.predict(process_img(image_path))[0, :]
-            folder_representations.append(img_representation)
-        db_representations.append(folder_representations)
-    
-    img1_representation = vgg_face_descriptor.predict(process_img('wat.jpg'))[0, :]
-    
-    similar_indices = []
-    
-    for folder_index, folder_representations in enumerate(db_representations):
-        similar_indices_folder = find_similar_images(img1_representation, folder_representations)
-        similar_indices.extend([(folder_index, idx) for idx in similar_indices_folder])
-    
-    if len(similar_indices) > 0:
-        print("The new image is verified")
-    else:
-        print("The new image is not verified")
