@@ -25,8 +25,17 @@ Here's the file structure of the project:
   - `imagejpg`: Example image file for testing.
   - `pdf.pdf`: Example PDF file for testing.
 
+## Dependencies
 
+Running the application can be done following the instructions above:
 
+1. To create a Python Virtual Environment (virtualenv) to run the code, type:
+
+    ```python3 -m venv ml-env```
+
+2. Activate the new environment:
+    * Windows: ```ml-env\Scripts\activate.bat```
+    * macOS and Linux: ```source ml-env/bin/activate``` 
 
 ## Getting Started
 
