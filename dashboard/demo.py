@@ -79,6 +79,6 @@ if __name__ == "__main__":
                 similar_indices.extend([(folder_index, idx) for idx in similar_indices_folder])
             
             if len(similar_indices) > 0:
-                st.text("The new doc is verified")
+                st.text("verified")
             else:
-                st.text("The doc is not verified")
+                st.text("Not verified")
