@@ -1,21 +1,16 @@
 import io
 import fitz
-from PIL import Image
-from model_util import DeepModel
+from model_util import DeepModel, fs_images
 from flask import Flask, request, jsonify
 from aws_util import process_images_in_specific_bucket_folder
-from flask_util import find_similar_images, process_document
+from flask_util import process_document
 
 BUCKET_NAME = 'docnet-peapi'
 
 app = Flask(__name__)
 
+# Initialize the model
 model = DeepModel._define_model()
-
-def find_similar_images(image_representation, db_representations, threshold=0.06):
-    similarities = [DeepModel.findCosineDistance(image_representation, db_repr) for db_repr in db_representations]
-    similar_indices = [i for i, similarity in enumerate(similarities) if similarity < threshold]
-    return similar_indices
 
 @app.route('/verify_document/<specific_folder>', methods=['POST'])
 def verify_document(specific_folder):
@@ -39,7 +34,7 @@ def verify_document(specific_folder):
 
     for img1_representation in uploaded_images:
         img1_representation = model.predict(img1_representation)[0,:]
-        similar_indices = find_similar_images(img1_representation, db_representations)
+        similar_indices = fs_images(img1_representation, db_representations)
         if len(similar_indices) > 0:
             result.append('Verified')
         else:

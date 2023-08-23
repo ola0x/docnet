@@ -1,15 +1,8 @@
-import os
-from flask import Flask, request, jsonify
-from PIL import Image
 import io
-from model_util import DeepModel
-from aws_util import process_img, process_images_in_specific_bucket_folder
 import fitz
-
-def find_similar_images(image_representation, db_representations, threshold=0.06):
-    similarities = [DeepModel.findCosineDistance(image_representation, db_repr) for db_repr in db_representations]
-    similar_indices = [i for i, similarity in enumerate(similarities) if similarity < threshold]
-    return similar_indices
+from PIL import Image
+from model_util import DeepModel
+from aws_util import process_img
 
 def process_document(file_stream):
     file_extension = file_stream.filename.split('.')[-1].lower()
@@ -31,8 +24,8 @@ def process_document(file_stream):
                 image = pdf_document.extract_image(xref)
                 image_data = image["image"]
                 image_extension = image["ext"]
-                image = Image.open(io.BytesIO(image_data))
-                processed_image = DeepModel.process_img(image)
+                # image = Image.open(io.BytesIO(image_data))
+                processed_image = process_img(image_data)
                 images.append(processed_image)
         return images
     else:

@@ -73,7 +73,7 @@ Replace `path/to/document.jpg` with the path to the image or PDF document you wa
 2. The API will process the uploaded document. The response will indicate if the document is verified or not.
 
 ## Model
-You can download the pre-trained `docnet.h5` file from (here)[].
+You can download the pre-trained `docnet.h5` file from [link] (https://drive.google.com/drive/folders/1nbgsuMHn3TuMsEKdRHFPlhhnaqfJCw9s?usp=sharing).
 
 ## Notes
 
