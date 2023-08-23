@@ -23,6 +23,10 @@ Here's the file structure of the project:
   - `imagejpg`: Example image file for testing.
   - `pdf.pdf`: Example PDF file for testing.
 
+## DashBoard Image
+
+![image of the dashboard](https://github.com/[ola0x]/[docnet]/blob/[main]/dasboard/web-dashboard.jpg?raw=true)
+
 
 ## Getting Started
 
