@@ -9,6 +9,25 @@ This repository contains a Flask API for verifying documents using image process
 
 - Set up AWS credentials (Access Key ID and Secret Access Key) to access the S3 bucket.
 
+## File Structure
+
+Here's the file structure of the project:
+
+- `api.py`: The main Flask API script.
+- `aws_util.py`: Utility functions for interacting with AWS S3.
+- `docnet.h5`: Pre-trained model file.
+- `model_util.py`: Utility functions for image processing and model usage.
+- `requirements.txt`: List of required Python packages.
+- `Dockerfile`: Configuration for creating a Docker container.
+- `flask_util.py`: Additional utility functions for Flask.
+- `README.md`: This file providing project information and instructions.
+- `sample_doc/`: A directory containing sample image and PDF files for testing.
+  - `imagejpg`: Example image file for testing.
+  - `pdf.pdf`: Example PDF file for testing.
+
+
+
+
 ## Getting Started
 
 1. Clone this repository to your local machine:
