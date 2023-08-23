@@ -25,7 +25,7 @@ Here's the file structure of the project:
 
 ## DashBoard Image
 
-![image of the dashboard](https://github.com/[ola0x]/[docnet]/blob/[main]/dasboard/web-dashboard.jpg?raw=true)
+![image of the dashboard](https://github.com/ola0x/docnet/blob/main/dashboard/demo-f/web-dashboard.JPG)
 
 
 ## Getting Started
