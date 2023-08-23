@@ -6,9 +6,11 @@ from flask import Flask, request, jsonify
 from aws_util import process_images_in_specific_bucket_folder
 from flask_util import find_similar_images, process_document
 
-BUCKET_NAME = 'docnet-peapi'
+BUCKET_NAME = 'local-periscope-bucket'
 
 app = Flask(__name__)
+
+ALLOWED_EXTENSIONS = {'pdf', 'jpg', 'png', 'pdf'}
 
 model = DeepModel._define_model()
 
@@ -16,6 +18,14 @@ def find_similar_images(image_representation, db_representations, threshold=0.06
     similarities = [DeepModel.findCosineDistance(image_representation, db_repr) for db_repr in db_representations]
     similar_indices = [i for i, similarity in enumerate(similarities) if similarity < threshold]
     return similar_indices
+
+@app.route('/healthz', methods = ['GET'])
+def health():
+    return jsonify(
+      application='Doc AI-Verification',
+      version='1.0.0',
+      message= "endpoint is working..."
+    )
 
 @app.route('/verify_document/<specific_folder>', methods=['POST'])
 def verify_document(specific_folder):
