@@ -9,6 +9,7 @@ from flask_util import find_similar_images, process_document
 BUCKET_NAME = 'local-periscope-bucket'
 
 app = Flask(__name__)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 ALLOWED_EXTENSIONS = {'pdf', 'jpg', 'png', 'pdf'}
 
@@ -22,9 +23,9 @@ def find_similar_images(image_representation, db_representations, threshold=0.06
 @app.route('/healthz', methods = ['GET'])
 def health():
     return jsonify(
-      application='Doc AI-Verification',
+      application='Doc AI',
       version='1.0.0',
-      message= "endpoint is working..."
+      message= "endpoint working"
     )
 
 @app.route('/verify_document/<specific_folder>', methods=['POST'])
@@ -58,4 +59,4 @@ def verify_document(specific_folder):
     return jsonify({'result': result})
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(port=5000)
