@@ -9,6 +9,34 @@ This repository contains a Flask API for verifying documents using image process
 
 - Set up AWS credentials (Access Key ID and Secret Access Key) to access the S3 bucket.
 
+## File Structure
+
+Here's the file structure of the project:
+
+- `api.py`: The main Flask API script.
+- `aws_util.py`: Utility functions for interacting with AWS S3.
+- `docnet.h5`: Pre-trained model file.
+- `model_util.py`: Utility functions for image processing and model usage.
+- `requirements.txt`: List of required Python packages.
+- `Dockerfile`: Configuration for creating a Docker container.
+- `flask_util.py`: Additional utility functions for Flask.
+- `README.md`: This file providing project information and instructions.
+- `sample_doc/`: A directory containing sample image and PDF files for testing.
+  - `imagejpg`: Example image file for testing.
+  - `pdf.pdf`: Example PDF file for testing.
+
+## Dependencies
+
+Running the application can be done following the instructions above:
+
+1. To create a Python Virtual Environment (virtualenv) to run the code, type:
+
+    ```python3 -m venv ml-env```
+
+2. Activate the new environment:
+    * Windows: ```ml-env\Scripts\activate.bat```
+    * macOS and Linux: ```source ml-env/bin/activate``` 
+
 ## Getting Started
 
 1. Clone this repository to your local machine:
@@ -22,7 +50,7 @@ cd docnet
 pip install -r requirements.txt
 ```
 
-3. JWT Secret and Algorithm
+3. AWS Access Keys and Secret
 create an environment file called `.env` and configure the following variables:
 
 ```
@@ -44,7 +72,20 @@ secret=xxxx
 python api.py
 ```
 
+The API will start running on `http://127.0.0.1:5000`.
 
+## Docker
+1. Install Docker.
+
+2. Build the Docker image
+```
+docker build -t docnet .
+```
+
+3. Run a Docker container from the built image
+```
+docker run -p 5000:5000 docnet
+```
 The API will start running on `http://127.0.0.1:5000`.
 
 ## How to Use
@@ -58,6 +99,9 @@ curl -X POST -F "document=@path/to/document.jpg" http://127.0.0.1:5000/verify_do
 Replace `path/to/document.jpg` with the path to the image or PDF document you want to verify.
 
 2. The API will process the uploaded document. The response will indicate if the document is verified or not.
+
+## Model
+You can download the pre-trained `docnet.h5` file from [link] (https://drive.google.com/drive/folders/1nbgsuMHn3TuMsEKdRHFPlhhnaqfJCw9s?usp=sharing).
 
 ## Notes
 
