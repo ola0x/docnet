@@ -18,13 +18,12 @@ def process_document(file_stream):
         images = []
         for page_number in range(pdf_document.page_count):
             pdf_page = pdf_document[page_number]
-            image_list = pdf_page.get_pixmapmatrix().get_images(full=True)
+            image_list = pdf_page.get_images(full=True)
             for img_index, img in enumerate(image_list):
                 xref = img[0]
                 image = pdf_document.extract_image(xref)
                 image_data = image["image"]
                 image_extension = image["ext"]
-                # image = Image.open(io.BytesIO(image_data))
                 processed_image = process_img(image_data)
                 images.append(processed_image)
         return images
