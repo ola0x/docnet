@@ -40,7 +40,10 @@ def verify_document(specific_folder):
         else:
             result.append('Not verified')
         
-    return jsonify({'result': result})
+    return jsonify({
+        "message": "successful",
+        'result': result
+        })
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
