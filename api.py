@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 from aws_util import process_images_in_specific_bucket_folder
 from flask_util import process_document
 
-BUCKET_NAME = 'docnet-peapi'
+BUCKET_NAME = ''
 
 app = Flask(__name__)
 

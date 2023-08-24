@@ -17,7 +17,8 @@ def load_image_from_bytes(image_bytes):
 def process_img(image_bytes):
     img = load_image_from_bytes(image_bytes)
     img = img.resize((224, 224))
-    x = image.img_to_array(img)
+    img = img.convert('RGB')  # Ensure the image is in RGB format
+    x = image.img_to_array(img, data_format='channels_last')
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)
     return x
