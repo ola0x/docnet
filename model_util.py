@@ -1,6 +1,4 @@
-import os
 import numpy as np
-
 from keras import Model
 from keras import Sequential
 from keras.preprocessing import image
@@ -111,12 +109,6 @@ class DeepModel():
         x = preprocess_input(x)
         return x
     
-    @staticmethod
-    def find_similar_images(self, image_representation, db_representations, threshold=0.06):
-        similarities = [self._findCosineDistance(image_representation, db_repr) for db_repr in db_representations]
-        similar_indices = [i for i, similarity in enumerate(similarities) if similarity < threshold]
-        return similar_indices
-    
     def extract_feature(self, representations):
         '''Extract deep feature using MobileNet model.
 
@@ -128,3 +120,8 @@ class DeepModel():
         '''
         features = self._model.vgg_face_descriptor.predict(representations)[0,:]
         return features
+
+def fs_images(image_representation, db_representations, threshold=0.06):
+        similarities = [DeepModel.findCosineDistance(image_representation, db_repr) for db_repr in db_representations]
+        similar_indices = [i for i, similarity in enumerate(similarities) if similarity < threshold]
+        return similar_indices

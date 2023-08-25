@@ -1,7 +1,7 @@
+venv/*
+.env
+docnet.h5
+
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
-
-.env
-venv/*
-docnet.h5
