@@ -9,7 +9,6 @@ from flask_util import process_document
 BUCKET_NAME = 'local-periscope-bucket'
 
 app = Flask(__name__)
-app.debug = True
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 cors = CORS(app)
@@ -63,5 +62,4 @@ def verify_document():
         
 if __name__ == "__main__":
     print("Starting Doc verification...")
-    app.debug = True
     app.run()
