@@ -1,4 +1,5 @@
 import io
+import fitz
 import boto3
 import numpy as np
 from PIL import Image
@@ -40,7 +41,22 @@ def process_images_in_specific_bucket_folder(bucket_name, specific_folder):
             img = process_img(image_data)
             if img is not None:
                 images.append(img)
-    
+        elif key.lower().endswith(('.pdf')):
+            doc_object = s3.get_object(Bucket=bucket_name, Key=key)
+            doc_data = doc_object['Body'].read()
+            pdf_document = fitz.open(stream=doc_data, filetype='pdf')
+            images = []
+            for page_number in range(pdf_document.page_count):
+                pdf_page = pdf_document[page_number]
+                image_list = pdf_page.get_images(full=True)
+                for img_index, img in enumerate(image_list):
+                    xref = img[0]
+                    image = pdf_document.extract_image(xref)
+                    image_data = image["image"]
+                    image_extension = image["ext"]
+                    processed_image = process_img(image_data)
+                    if processed_image is not None:
+                        images.append(processed_image)
     if images:
         return np.vstack(images)
     else:
